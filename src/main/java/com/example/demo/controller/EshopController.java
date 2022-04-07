@@ -1,7 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.Eshop;
+import com.example.demo.req.EshopReq;
 import com.example.demo.resp.CommonResp;
+import com.example.demo.resp.EshopResp;
 import com.example.demo.service.EshopService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +19,9 @@ public class EshopController {
     private EshopService eshopService;
 
     @GetMapping("/list")
-    public CommonResp list(){
-        CommonResp<List<Eshop>> resp = new CommonResp<>();
-        List<Eshop>list = eshopService.list();
+    public CommonResp list(EshopReq req){
+        CommonResp<List<EshopResp>> resp = new CommonResp<>();
+        List<EshopResp>list = eshopService.list(req);
         resp.setContent( list );
         return resp;
     }
