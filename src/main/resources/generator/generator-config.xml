@@ -50,7 +50,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 用于自动生成代码的数据库表；生成哪些表-->
-               <table tableName="demo" domainObjectName="Demo">
-        </table>
+    <!--  <table tableName="demo" domainObjectName="Demo"></table>-->
+        <table tableName="eshop" domainObjectName="Eshop"></table>
     </context>
 </generatorConfiguration>
