@@ -5,11 +5,10 @@ import com.example.demo.domain.EshopExample;
 import com.example.demo.mapper.EshopMapper;
 import com.example.demo.req.EshopReq;
 import com.example.demo.resp.EshopResp;
-import org.springframework.beans.BeanUtils;
+import com.example.demo.util.CopyUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,12 +23,18 @@ public class EshopService {
         criteria.andNameLike( "%"+req.getName()+"%" );
         List<Eshop> eshopList = eshopMapper.selectByExample( eshopExample );
 
-        List<EshopResp> respList = new ArrayList<>();
-        for (Eshop eshop : eshopList) {
-            EshopResp eshopResp = new EshopResp();
-            BeanUtils.copyProperties( eshop,eshopResp );
-            respList.add( eshopResp );
-        }
-        return respList;
+//        List<EshopResp> respList = new ArrayList<>();
+//        for (Eshop eshop : eshopList) {
+//              // EshopResp eshopResp = new EshopResp();
+//              //BeanUtils.copyProperties( eshop,eshopResp );
+                //对象复制
+//            EshopResp eshopResp = CopyUtil.copy( eshop, EshopResp.class );
+//
+//            respList.add( eshopResp );
+//        }
+          //列表复制
+        List<EshopResp> list = CopyUtil.copyList( eshopList, EshopResp.class );
+
+        return list;
     }
 }
